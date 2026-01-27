@@ -4,11 +4,10 @@ export type Post = {
 	slug: string;
 	title: string;
 	date: string;
-	content: string;
+	html: string;
 };
 
-
-type PostData = { title: string; date: string; content: string };
+type PostData = { title: string; date: string; html: string };
 
 const posts = registry as Record<string, Record<string, PostData>>;
 

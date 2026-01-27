@@ -1,9 +1,22 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { unified } from "unified";
+import remarkParse from "remark-parse";
+import remarkGfm from "remark-gfm";
+import remarkRehype from "remark-rehype";
+import rehypeShiki from "@shikijs/rehype";
+import rehypeStringify from "rehype-stringify";
 
 const contentDir = path.join(process.cwd(), "src/content");
 const outFile = path.join(process.cwd(), "src/lib/posts-registry.json");
+
+const processor = unified()
+	.use(remarkParse)
+	.use(remarkGfm)
+	.use(remarkRehype)
+	.use(rehypeShiki, { theme: "one-dark-pro" })
+	.use(rehypeStringify);
 
 const slugs = fs
 	.readdirSync(contentDir, { withFileTypes: true })
@@ -23,10 +36,12 @@ for (const slug of slugs) {
 		const raw = fs.readFileSync(path.join(slugDir, file), "utf-8");
 		const { data, content } = matter(raw);
 
+		const html = String(await processor.process(content.trim()));
+
 		registry[slug][locale] = {
 			title: data.title || "",
 			date: data.date || "",
-			content: content.trim(),
+			html,
 		};
 	}
 }
