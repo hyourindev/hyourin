@@ -7,6 +7,7 @@ export type Post = {
 	content: string;
 };
 
+
 type PostData = { title: string; date: string; content: string };
 
 const posts = registry as Record<string, Record<string, PostData>>;
