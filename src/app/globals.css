@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 :root {
 	--background: #ffffff;
@@ -15,4 +16,158 @@ body {
 	background: var(--background);
 	color: var(--foreground);
 	font-family: var(--font-kode-mono), var(--font-noto-sans-jp), monospace;
+}
+
+/* Blog prose — match monospace aesthetic */
+.prose {
+	--tw-prose-body: #171717;
+	--tw-prose-headings: #171717;
+	--tw-prose-links: #171717;
+	--tw-prose-code: #171717;
+	--tw-prose-pre-bg: #fafafa;
+	--tw-prose-pre-code: #171717;
+	font-family: inherit;
+	font-size: 0.95rem;
+	line-height: 1.8;
+}
+
+.prose h2 {
+	font-size: 1.15rem;
+	letter-spacing: 0.05em;
+	margin-top: 2.5em;
+	margin-bottom: 0.6em;
+	border-bottom: none;
+}
+
+.prose h3 {
+	font-size: 1rem;
+	letter-spacing: 0.04em;
+	margin-top: 1.8em;
+	margin-bottom: 0.5em;
+}
+
+.prose p {
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+/* Shiki code blocks (One Dark Pro) */
+.prose pre {
+	font-size: 0.85rem;
+	line-height: 1.6;
+	border-radius: 6px;
+	border: none;
+	background: #282c34;
+	color: #abb2bf;
+	padding: 1.2em 1.4em;
+	overflow-x: auto;
+	margin-top: 1em !important;
+	margin-bottom: 1em !important;
+}
+
+.prose .shiki {
+	border-radius: 6px;
+	padding: 1.2em 1.4em;
+	overflow-x: auto;
+	font-size: 0.85rem;
+	line-height: 1.6;
+	margin-top: 1em !important;
+	margin-bottom: 1em !important;
+}
+
+.prose .shiki code {
+	background: none;
+	padding: 0;
+	font-size: inherit;
+	color: inherit;
+}
+
+.prose code {
+	font-family: inherit;
+}
+
+.prose code:not(pre code) {
+	font-size: 0.9em;
+	background: #f0f0f0;
+	padding: 0.15em 0.4em;
+	border-radius: 3px;
+	font-weight: 400;
+}
+
+.prose code::before,
+.prose code::after {
+	content: none;
+}
+
+.prose a {
+	text-decoration: underline;
+	text-underline-offset: 3px;
+	text-decoration-color: #a3a3a3;
+}
+
+.prose a:hover {
+	text-decoration-color: #171717;
+}
+
+.prose ul {
+	margin-top: 0.8em;
+	margin-bottom: 0.8em;
+}
+
+.prose li {
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+}
+
+.prose :where(table) {
+	font-size: 0.85rem !important;
+	width: 100% !important;
+	display: table !important;
+	border-collapse: collapse !important;
+	margin-top: 1.5em !important;
+	margin-bottom: 1.5em !important;
+	overflow-x: auto;
+}
+
+.prose :where(thead) {
+	border-bottom: 2px solid #d4d4d4 !important;
+}
+
+.prose :where(thead th) {
+	font-weight: 600 !important;
+	text-align: left !important;
+	padding: 0.6em 0.8em !important;
+	white-space: nowrap !important;
+	color: #171717 !important;
+	border-bottom: none !important;
+}
+
+.prose :where(tbody td) {
+	padding: 0.55em 0.8em !important;
+	white-space: nowrap !important;
+	border-bottom: 1px solid #f0f0f0 !important;
+	border-top: none !important;
+}
+
+.prose :where(tbody tr:last-child td) {
+	border-bottom: none !important;
+}
+
+.prose :where(tbody tr:hover) {
+	background: #fafafa;
+}
+
+.prose hr {
+	display: none;
+}
+
+.prose strong {
+	font-weight: 600;
+}
+
+.prose blockquote {
+	border-left: 2px solid #d4d4d4;
+	padding-left: 1em;
+	color: #525252;
+	font-style: normal;
 }
