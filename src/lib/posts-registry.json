@@ -1,0 +1,14 @@
+{
+	"hello": {
+		"en": {
+			"title": "Hello World",
+			"date": "2026-01-27",
+			"content": "This is my first post. Welcome to hyourin.dev."
+		},
+		"ja": {
+			"title": "はじめまして",
+			"date": "2026-01-27",
+			"content": "最初の投稿です。hyourin.devへようこそ。"
+		}
+	}
+}

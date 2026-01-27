@@ -1,0 +1,54 @@
+import type { Metadata } from "next";
+import { Kode_Mono, Noto_Sans_JP } from "next/font/google";
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
+import { notFound } from "next/navigation";
+import { routing } from "@/i18n/routing";
+import LangSwitcher from "@/components/lang-switcher";
+import SocialLinks from "@/components/social-links";
+import "../globals.css";
+
+const kodeMono = Kode_Mono({
+	variable: "--font-kode-mono",
+	subsets: ["latin"],
+});
+
+const notoSansJP = Noto_Sans_JP({
+	variable: "--font-noto-sans-jp",
+	subsets: ["latin"],
+	weight: ["300", "400", "500", "700"],
+	preload: false,
+});
+
+export const metadata: Metadata = {
+	title: "hyourin",
+	description: "hyourin.dev",
+};
+
+export default async function RootLayout({
+	children,
+	params,
+}: Readonly<{
+	children: React.ReactNode;
+	params: Promise<{ locale: string }>;
+}>) {
+	const { locale } = await params;
+
+	if (!routing.locales.includes(locale as "en" | "ja")) {
+		notFound();
+	}
+
+	const messages = await getMessages();
+
+	return (
+		<html lang={locale}>
+			<body className={`${kodeMono.variable} ${notoSansJP.variable} antialiased`}>
+				<NextIntlClientProvider messages={messages}>
+					<SocialLinks />
+					<LangSwitcher />
+					{children}
+				</NextIntlClientProvider>
+			</body>
+		</html>
+	);
+}
