@@ -8,7 +8,7 @@ export default function Home() {
 	const posts = getPosts(locale);
 
 	return (
-		<div className="flex flex-col min-h-screen px-6 py-8 max-w-xl mx-auto">
+		<div className="flex flex-col min-h-screen px-6 py-8 max-w-xl mx-auto -mt-30">
 			<main className="flex-1 flex flex-col items-center justify-center gap-2">
 				<h1 className="text-3xl tracking-widest">{t("title")}</h1>
 				<p className="text-sm text-neutral-400">{t("role")}</p>
