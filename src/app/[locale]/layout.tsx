@@ -44,8 +44,10 @@ export default async function RootLayout({
 		<html lang={locale}>
 			<body className={`${kodeMono.variable} ${notoSansJP.variable} antialiased`}>
 				<NextIntlClientProvider messages={messages}>
-					<SocialLinks />
-					<LangSwitcher />
+					<nav className="flex justify-between items-center px-6 py-8">
+						<SocialLinks />
+						<LangSwitcher />
+					</nav>
 					{children}
 				</NextIntlClientProvider>
 			</body>

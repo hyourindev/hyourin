@@ -14,7 +14,7 @@ export default function LangSwitcher() {
 	};
 
 	return (
-		<div className="fixed top-8 right-8 flex gap-4 text-xl font-bold tracking-widest">
+		<div className="flex gap-4 text-xl font-bold tracking-widest">
 			<Link
 				href={switchTo("en")}
 				className={locale === "en" ? "text-black" : "text-neutral-300 hover:text-neutral-500"}

@@ -36,7 +36,9 @@ for (const slug of slugs) {
 		const raw = fs.readFileSync(path.join(slugDir, file), "utf-8");
 		const { data, content } = matter(raw);
 
-		const html = String(await processor.process(content.trim()));
+		const html = String(await processor.process(content.trim()))
+			.replace(/<table>/g, '<div class="table-wrapper"><table>')
+			.replace(/<\/table>/g, '</table></div>');
 
 		registry[slug][locale] = {
 			title: data.title || "",

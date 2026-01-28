@@ -1,6 +1,6 @@
 export default function SocialLinks() {
 	return (
-		<div className="fixed top-8 left-8 flex gap-4">
+		<div className="flex gap-4">
 			<a
 				href="https://github.com/hyourindev"
 				target="_blank"
