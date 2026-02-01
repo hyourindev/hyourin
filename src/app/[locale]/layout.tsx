@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Kode_Mono, Noto_Sans_JP } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
+import Script from "next/script";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
@@ -42,6 +43,20 @@ export default async function RootLayout({
 
 	return (
 		<html lang={locale}>
+			<head>
+				<Script
+					src="https://www.googletagmanager.com/gtag/js?id=G-NCZ7G1SW5Q"
+					strategy="afterInteractive"
+				/>
+				<Script id="google-analytics" strategy="afterInteractive">
+					{`
+						window.dataLayer = window.dataLayer || [];
+						function gtag(){dataLayer.push(arguments);}
+						gtag('js', new Date());
+						gtag('config', 'G-NCZ7G1SW5Q');
+					`}
+				</Script>
+			</head>
 			<body className={`${kodeMono.variable} ${notoSansJP.variable} antialiased`}>
 				<NextIntlClientProvider messages={messages}>
 					<nav className="flex justify-between items-center px-6 py-8">
